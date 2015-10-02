@@ -1,0 +1,7 @@
+for i in *.e*;do 
+  err=$(cat $i | grep -i error); 
+    if [[ ${#err} -gt 2 ]];then 
+      clus=$(head -n 1 ${i/e/o});
+      echo -e "$err : $clus : ${i:o:13}" ; 
+    fi;  
+done

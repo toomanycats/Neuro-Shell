@@ -1,0 +1,17 @@
+#!/bin/bash
+
+### This simple script is for running
+### fslmerge which requires a list of files to merge.
+### A novice user probably doesn't know enough bash
+### to generate a list, so this wrapper does that step for
+### them
+
+input_pattern=$1
+output=$2
+
+list_of_files=$(ls $input_pattern*.nii)
+
+fslmerge -t $output $list_of_files
+gunzip $output.nii.gz
+
+exit 0
